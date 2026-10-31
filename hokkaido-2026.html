@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>札幌・小樽 旅のしおり｜2026.11.12–11.14</title>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root{
+    --sea:#2B5A7E;        /* 冬の空・藍 */
+    --sea-deep:#1B3A54;
+    --berry:#C1466B;      /* 雪苺・アクセント */
+    --gold:#E8A33D;       /* 灯り */
+    --snow:#F4F7FA;       /* 雪の背景 */
+    --foam:#FFFFFF;
+    --ink:#22303A;
+    --muted:#6B7B87;
+    --line:#DCE6EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;background:var(--snow);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:430px;margin:0 auto;background:var(--snow);overflow:hidden;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:linear-gradient(180deg,#1B3A54 0%,#2B5A7E 60%,#5E8CB0 120%);color:#fff;padding:30px 26px 34px;overflow:hidden;}
+  .hero .moon{position:absolute;top:44px;right:-20px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FDFBF3,#DCE6EE 75%);opacity:.9;}
+  .snowflake{position:absolute;color:rgba(255,255,255,.5);pointer-events:none;}
+  .eyebrow{font-family:"Zen Maru Gothic";font-weight:700;letter-spacing:.3em;font-size:11px;color:#BFE0F0;position:relative;z-index:2;}
+  .hokkaido{font-family:"Caprasimo",serif;font-size:52px;line-height:.95;margin:6px 0 2px;position:relative;z-index:2;text-shadow:0 3px 0 rgba(27,58,84,.3);}
+  .dest{font-family:"Zen Maru Gothic";font-weight:900;font-size:19px;letter-spacing:.12em;position:relative;z-index:2;color:#fff;}
+  .dates{position:relative;z-index:2;margin-top:14px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:7px 15px;border-radius:999px;font-weight:700;font-size:14px;}
+  .dates b{font-family:"Zen Maru Gothic";font-weight:900;}
+  .facts{position:relative;z-index:2;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .fact{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:11px 13px;}
+  .fact .k{font-size:10px;letter-spacing:.18em;color:#BFE0F0;font-weight:700;}
+  .fact .v{font-family:"Zen Maru Gothic";font-weight:700;font-size:13.5px;margin-top:3px;line-height:1.4;}
+  .fact.wide{grid-column:1 / -1;}
+
+  /* ---------- PINS ---------- */
+  .pins{padding:18px 18px 4px;display:flex;flex-direction:column;gap:11px;}
+  .pin{display:flex;gap:12px;align-items:flex-start;background:var(--foam);border-radius:16px;padding:13px 15px;border:1px solid var(--line);box-shadow:0 4px 14px rgba(27,58,84,.05);}
+  .pin .ic{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:19px;}
+  .pin.crab .ic{background:#FBE6EC;}
+  .pin.lamb .ic{background:#FFF1DD;}
+  .pin .tx{font-size:13px;}
+  .pin .tx b{font-family:"Zen Maru Gothic";font-weight:700;display:block;font-size:14px;color:var(--sea-deep);}
+  .pin .tx .sub{display:block;color:var(--muted);font-size:12px;}
+  .chip{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;background:var(--berry);color:#fff;padding:2px 9px;border-radius:999px;margin-top:5px;}
+
+  /* ---------- SECTION TITLES ---------- */
+  .band{padding:22px 22px 12px;display:flex;align-items:center;gap:10px;}
+  .band h2{font-family:"Zen Maru Gothic";font-weight:900;font-size:16px;color:var(--sea-deep);letter-spacing:.03em;}
+  .band .line{flex:1;height:2px;background:var(--line);border-radius:2px;}
+  .hint{font-size:11.5px;color:var(--muted);padding:0 22px 8px;letter-spacing:.02em;}
+
+  /* ---------- ACCORDION ---------- */
+  .acc{padding:0 18px;display:flex;flex-direction:column;gap:13px;}
+  details{background:var(--foam);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(27,58,84,.06);}
+  summary{cursor:pointer;list-style:none;outline:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  .chev{width:10px;height:10px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(45deg);transition:transform .25s ease;opacity:.85;flex:none;margin-top:-3px;}
+  details[open] > summary .chev{transform:rotate(-135deg);}
+  @media (prefers-reduced-motion:reduce){.chev{transition:none;}}
+
+  .day-head{display:flex;align-items:center;gap:13px;padding:15px 17px;background:linear-gradient(100deg,var(--sea),var(--sea-deep));color:#fff;}
+  .day-no{font-family:"Caprasimo",serif;font-size:13px;line-height:1;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:8px 10px;text-align:center;flex:none;}
+  .day-no small{display:block;font-family:"Zen Maru Gothic";font-size:8px;letter-spacing:.2em;opacity:.85;margin-bottom:2px;}
+  .day-no span{font-size:21px;}
+  .day-meta{flex:1;}
+  .day-meta .d{font-family:"Zen Maru Gothic";font-weight:900;font-size:16px;letter-spacing:.03em;}
+  .day-meta .t{font-size:11.5px;color:#CDE7F2;letter-spacing:.1em;font-weight:700;margin-top:1px;}
+
+  .tl{padding:8px 17px 16px;}
+  .ev{display:flex;gap:14px;position:relative;padding:10px 0;}
+  .ev::before{content:"";position:absolute;left:43px;top:0;bottom:0;width:2px;background:var(--line);}
+  .ev:first-child::before{top:18px;}
+  .ev:last-child::before{bottom:auto;height:18px;}
+  .ev .time{flex:none;width:46px;text-align:right;font-weight:700;font-size:12px;color:var(--sea);font-variant-numeric:tabular-nums;padding-top:1px;}
+  .ev .dot{flex:none;width:13px;height:13px;border-radius:50%;margin-top:4px;background:#fff;border:3px solid var(--gold);position:relative;z-index:2;}
+  .ev.key .dot{border-color:var(--berry);background:var(--berry);}
+  .ev .body{flex:1;}
+  .ev .body .h{font-family:"Zen Maru Gothic";font-weight:700;font-size:14px;color:var(--ink);}
+  .ev .body .n{font-size:12px;color:var(--muted);margin-top:1px;}
+  .ev.key .body .h{color:var(--berry);}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1.5px;}
+  .tag.fix{background:var(--berry);color:#fff;}
+  .tag.eat{background:#FFF0DA;color:#C77B17;}
+  .tag.fun{background:#E1EEF5;color:var(--sea);}
+  .tag.train{background:#E6EDF4;color:#3A6A93;}
+
+  .head{display:flex;align-items:center;gap:12px;padding:15px 17px;color:var(--sea-deep);}
+  .head .em{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:#E1EEF5;flex:none;}
+  .head .ht{flex:1;}
+  .head .ht b{font-family:"Zen Maru Gothic";font-weight:900;font-size:15px;display:block;}
+  .head .ht small{font-size:11.5px;color:var(--muted);}
+  .inner{padding:4px 17px 17px;}
+
+  .glist{display:flex;flex-direction:column;gap:10px;}
+  .g{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;}
+  .g .gbox{flex:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;font-size:14px;color:#fff;}
+  .g .gt{font-family:"Zen Maru Gothic";font-weight:700;font-size:14px;}
+  .g .gn{font-size:11.5px;color:var(--muted);}
+  .g .gpin{margin-left:auto;font-size:11px;font-weight:700;color:var(--berry);}
+
+  ul.chk{list-style:none;display:flex;flex-direction:column;gap:2px;}
+  ul.chk li{display:flex;gap:11px;align-items:flex-start;padding:8px 2px;border-bottom:1px dashed var(--line);font-size:13.5px;}
+  ul.chk li:last-child{border-bottom:none;}
+  ul.chk li .box{flex:none;width:20px;height:20px;border-radius:6px;border:2px solid var(--line);margin-top:2px;}
+  ul.chk li .lbl{flex:1;}
+  ul.chk li .lbl small{display:block;color:var(--muted);font-size:11.5px;line-height:1.4;}
+
+  /* ---------- FOOTER ---------- */
+  .foot{text-align:center;padding:28px 20px 42px;}
+  .foot .wave{display:block;width:100%;height:40px;}
+  .foot .mahalo{font-family:"Caprasimo",serif;font-size:32px;color:var(--berry);}
+  .foot .sig{font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.08em;}
+</style>
+</head>
+<body>
+<div class="binder" style="max-width:430px; margin:0 auto; padding:0 0 6px;">
+  <nav class="tabnav" style="padding-top:16px; padding-left:16px; padding-right:16px; gap:4px;">
+    <a href="index.html" class="tab home" style="font-size:11px; padding:8px 14px 9px;">Home</a>
+    <a href="travel.html" class="tab travel active" style="font-size:11px; padding:8px 14px 9px;">Travel</a>
+  </nav>
+</div>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="moon"></div>
+    <div class="snowflake" style="top:30px;left:40px;font-size:14px;">❄</div>
+    <div class="snowflake" style="top:90px;left:120px;font-size:10px;">❄</div>
+    <div class="snowflake" style="top:150px;left:60px;font-size:12px;">❅</div>
+    <div class="snowflake" style="top:120px;left:200px;font-size:9px;">❄</div>
+    <div class="eyebrow">FAMILY TRIP · WINTER</div>
+    <div class="hokkaido">Hokkaido</div>
+    <div class="dest">SAPPORO ・ OTARU</div>
+    <div class="dates">📅 <b>2026.11.12</b> 木 — <b>11.14</b> 土</div>
+    <div class="facts">
+      <div class="fact"><div class="k">MEMBERS</div><div class="v">パパ・ママ<br>こども</div></div>
+      <div class="fact"><div class="k">STAY · 2 NIGHTS</div><div class="v">札幌<br>グランドホテル</div></div>
+      <div class="fact wide"><div class="k">FLIGHT · 車なし（JR・徒歩移動）</div><div class="v">11/12 新千歳 9:00 着 ／ 11/14 新千歳 21:00 発</div></div>
+    </div>
+  </header>
+
+  <!-- PINS -->
+  <section class="pins">
+    <div class="pin crab">
+      <div class="ic">🦀</div>
+      <div class="tx"><b>雪華亭「雪月風華」コース</b><span class="sub">11/13(金) 17:00 ／ 松葉＆たらばかにしゃぶ ／ 個室で子連れ安心</span><span class="chip">予約確定済み</span></div>
+    </div>
+    <div class="pin lamb">
+      <div class="ic">🐑</div>
+      <div class="tx"><b>松尾ジンギスカン</b><span class="sub">11/12(木) 17:30 ／ 子どもは取り分け</span><span class="chip">予約確定済み</span></div>
+    </div>
+  </section>
+
+  <!-- 旅程 -->
+  <div class="band"><h2>🗺 3日間のながれ</h2><span class="line"></span></div>
+  <p class="hint">各日をタップで開けます</p>
+  <section class="acc">
+
+    <!-- DAY 1 -->
+    <details class="day">
+      <summary><div class="day-head"><div class="day-no"><small>DAY</small><span>01</span></div><div class="day-meta"><div class="d">11/12 木・到着日</div><div class="t">白い恋人パーク・ジンギスカン</div></div><span class="chev"></span></div></summary>
+      <div class="tl">
+        <div class="ev"><div class="time">09:00</div><div class="dot"></div><div class="body"><div class="h">新千歳空港 着 ✈</div><div class="n">到着・荷物受取</div></div></div>
+        <div class="ev"><div class="time">09:30</div><div class="dot"></div><div class="body"><div class="h">美瑛選果 <span class="tag eat">軽食</span></div><div class="n">コーンぱん(買えたら)・きのとや極上牛乳ソフト。食べすぎ注意</div></div></div>
+        <div class="ev"><div class="time">10:30</div><div class="dot"></div><div class="body"><div class="h">JRで札幌へ <span class="tag train">🚃</span></div><div class="n">新千歳→札幌（約40分）</div></div></div>
+        <div class="ev"><div class="time">11:15</div><div class="dot"></div><div class="body"><div class="h">札幌グランドホテル・荷物預け</div><div class="n">チェックイン前に荷物を預けて身軽に</div></div></div>
+        <div class="ev"><div class="time">12:15</div><div class="dot"></div><div class="body"><div class="h">白い恋人パーク <span class="tag fun">親子</span></div><div class="n">〜14:30。チョコレートファクトリー・子ども向けエリア・ソフト・お土産＆写真</div></div></div>
+        <div class="ev"><div class="time">15:00</div><div class="dot"></div><div class="body"><div class="h">ホテルでチェックイン・休憩</div><div class="n">荷物整理＆ひと休み</div></div></div>
+        <div class="ev key"><div class="time">17:30</div><div class="dot"></div><div class="body"><div class="h">松尾ジンギスカン <span class="tag fix">確定</span></div><div class="n">〜19:00。子どもは食べられるものを取り分け</div></div></div>
+        <div class="ev"><div class="time">19:30</div><div class="dot"></div><div class="body"><div class="h">ホテルへ</div><div class="n">初日はゆっくり休む</div></div></div>
+      </div>
+    </details>
+
+    <!-- DAY 2 -->
+    <details class="day">
+      <summary><div class="day-head"><div class="day-no"><small>DAY</small><span>02</span></div><div class="day-meta"><div class="d">11/13 金・小樽日</div><div class="t">海鮮・ルタオ・蟹・パフェ</div></div><span class="chev"></span></div></summary>
+      <div class="tl">
+        <div class="ev"><div class="time">08:00</div><div class="dot"></div><div class="body"><div class="h">ホテル朝食 <span class="tag eat">朝食</span></div><div class="n">〜9:00</div></div></div>
+        <div class="ev"><div class="time">09:30</div><div class="dot"></div><div class="body"><div class="h">JRで小樽へ <span class="tag train">🚃</span></div><div class="n">札幌→小樽（約30〜45分）。10:30頃着</div></div></div>
+        <div class="ev"><div class="time">11:30</div><div class="dot"></div><div class="body"><div class="h">滝波食堂（三角市場） <span class="tag eat">海鮮丼</span></div><div class="n">〜12:30。夜が蟹なので昼は食べすぎない</div></div></div>
+        <div class="ev"><div class="time">13:00</div><div class="dot"></div><div class="body"><div class="h">LeTAO本店 <span class="tag eat">スイーツ</span></div><div class="n">〜14:30。お茶＆スイーツ</div></div></div>
+        <div class="ev"><div class="time">14:30</div><div class="dot"></div><div class="body"><div class="h">堺町通り散策 <span class="tag fun">散策</span></div><div class="n">〜15:45。北一硝子・北菓楼など・お土産</div></div></div>
+        <div class="ev"><div class="time">16:15</div><div class="dot"></div><div class="body"><div class="h">JRで小樽→札幌 <span class="tag train">🚃</span></div><div class="n">夕食に向けて戻る</div></div></div>
+        <div class="ev key"><div class="time">17:00</div><div class="dot"></div><div class="body"><div class="h">雪華亭「雪月風華」コース <span class="tag fix">確定</span></div><div class="n">〜18:45。松葉かにしゃぶ＋たらばかにしゃぶ。個室で子連れ安心</div></div></div>
+        <div class="ev"><div class="time">19:15</div><div class="dot"></div><div class="body"><div class="h">佐藤 <span class="tag eat">パフェ</span></div><div class="n">〜20:30。大人は締めパフェ、子どもはソフトクリーム</div></div></div>
+        <div class="ev"><div class="time">20:30</div><div class="dot"></div><div class="body"><div class="h">ホテルへ</div><div class="n">〜21:00</div></div></div>
+      </div>
+    </details>
+
+    <!-- DAY 3 -->
+    <details class="day">
+      <summary><div class="day-head"><div class="day-no"><small>DAY</small><span>03</span></div><div class="day-meta"><div class="d">11/14 土・帰宅日</div><div class="t">北菓楼・六花亭・空港ラーメン</div></div><span class="chev"></span></div></summary>
+      <div class="tl">
+        <div class="ev"><div class="time">08:00</div><div class="dot"></div><div class="body"><div class="h">ホテル朝食 <span class="tag eat">朝食</span></div><div class="n">〜9:00</div></div></div>
+        <div class="ev"><div class="time">09:30</div><div class="dot"></div><div class="body"><div class="h">北菓楼 札幌本館 <span class="tag eat">お菓子</span></div><div class="n">〜10:15。「夢不思議」購入！</div></div></div>
+        <div class="ev"><div class="time">10:15</div><div class="dot"></div><div class="body"><div class="h">六花亭 札幌本店 <span class="tag eat">お土産</span></div><div class="n">〜10:45</div></div></div>
+        <div class="ev"><div class="time">11:00</div><div class="dot"></div><div class="body"><div class="h">ホテルで荷造り・休憩</div><div class="n">〜12:00にチェックアウト</div></div></div>
+        <div class="ev"><div class="time">12:00</div><div class="dot"></div><div class="body"><div class="h">札幌駅周辺で最後のお買い物 <span class="tag fun">買い物</span></div><div class="n">〜14:30</div></div></div>
+        <div class="ev"><div class="time">14:30</div><div class="dot"></div><div class="body"><div class="h">JRで新千歳空港へ <span class="tag train">🚃</span></div><div class="n">札幌→新千歳（約40分）</div></div></div>
+        <div class="ev"><div class="time">15:30</div><div class="dot"></div><div class="body"><div class="h">けやき 新千歳空港店 <span class="tag eat">味噌ラーメン</span></div><div class="n">〜16:15。北海道最後の味噌ラーメン！</div></div></div>
+        <div class="ev"><div class="time">16:15</div><div class="dot"></div><div class="body"><div class="h">空港でお土産・散策</div><div class="n">〜17:00</div></div></div>
+        <div class="ev"><div class="time">17:00</div><div class="dot"></div><div class="body"><div class="h">JALダイヤモンド・プレミアラウンジ</div><div class="n">出発までゆっくり</div></div></div>
+        <div class="ev key"><div class="time">21:00</div><div class="dot"></div><div class="body"><div class="h">新千歳発 ✈</div><div class="n">おつかれさまでした</div></div></div>
+      </div>
+    </details>
+
+    <!-- グルメチェック -->
+    <details>
+      <summary><div class="head"><div class="em">🍽</div><div class="ht"><b>食べたいものチェック</b><small>今回のグルメ</small></div><span class="chev"></span></div></summary>
+      <div class="inner">
+        <div class="glist">
+          <div class="g"><div class="gbox"></div><div><div class="gt">コーンぱん</div><div class="gn">美瑛選果</div></div><div class="gpin">DAY1</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">極上牛乳ソフト</div><div class="gn">きのとや</div></div><div class="gpin">DAY1</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">ジンギスカン</div><div class="gn">松尾ジンギスカン</div></div><div class="gpin">DAY1</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">海鮮丼</div><div class="gn">滝波食堂（三角市場）</div></div><div class="gpin">DAY2</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">スイーツ</div><div class="gn">LeTAO本店</div></div><div class="gpin">DAY2</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">かにしゃぶ</div><div class="gn">雪華亭</div></div><div class="gpin">DAY2</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">締めパフェ</div><div class="gn">佐藤</div></div><div class="gpin">DAY2</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">夢不思議・お菓子</div><div class="gn">北菓楼・六花亭</div></div><div class="gpin">DAY3</div></div>
+          <div class="g"><div class="gbox"></div><div><div class="gt">味噌ラーメン</div><div class="gn">けやき 新千歳空港店</div></div><div class="gpin">DAY3</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 冬の持ち物メモ -->
+    <details>
+      <summary><div class="head"><div class="em">🧤</div><div class="ht"><b>冬の持ち物メモ</b><small>11月の北海道・子連れ</small></div><span class="chev"></span></div></summary>
+      <div class="inner">
+        <ul class="chk">
+          <li><span class="box"></span><span class="lbl">防寒着（ダウン・手袋・帽子・マフラー）<small>11月中旬は雪・氷点下の可能性あり</small></span></li>
+          <li><span class="box"></span><span class="lbl">滑りにくい靴<small>路面凍結対策。子供靴も</small></span></li>
+          <li><span class="box"></span><span class="lbl">子供の防寒・着替え<small>屋内外の寒暖差が大きい</small></span></li>
+          <li><span class="box"></span><span class="lbl">ベビーカー or 抱っこひも<small>雪道はベビーカーが押しにくいので抱っこひも併用が安心</small></span></li>
+          <li><span class="box"></span><span class="lbl">リップ・保湿<small>乾燥対策</small></span></li>
+          <li><span class="box"></span><span class="lbl">お菓子・おやつ<small>電車・食事待ちのぐずり対策</small></span></li>
+        </ul>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <svg class="wave" viewBox="0 0 430 40" preserveAspectRatio="none">
+      <path d="M0,25 Q35,10 70,25 T140,25 T210,25 T280,25 T350,25 T430,25" fill="none" stroke="#2B5A7E" stroke-width="2" opacity=".4"/>
+    </svg>
+    <div class="mahalo">Have a nice trip!</div>
+    <div class="sig">あたたかくして、北の冬を楽しんで ❄️</div>
+  </footer>
+
+</div>
+</body>
+</html>
