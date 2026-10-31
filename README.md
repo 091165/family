@@ -17,7 +17,7 @@
 ### 見かたは2通り
 - **GitHubアプリ**：上のリンク（`.md` ファイル）をタップ。Private のままでも見られます
 - **Webサイト（GitHub Pages）**：`.html` ファイル。リポジトリを Public にして Pages をオンにすると
-  `https://091165.github.io/family_schedule/` で、デザイン付きで見られます
+  `https://091165.github.io/family/` で、デザイン付きで見られます
 
 ### 構成
 ```
